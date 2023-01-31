@@ -7,30 +7,30 @@ public class Radio {
         return currentRadioStation;
     }
 
-    public void next(int newRadioStation) {
-        if (newRadioStation >= 0 && newRadioStation <= 8) {
-            currentRadioStation = ++newRadioStation;
+    public void setCurrentRadioStation(int currentRadioStation) {
+        if (currentRadioStation < 0) {
+            return;
+        }
+        if (currentRadioStation > 9) {
+            return;
+        }
+        this.currentRadioStation = currentRadioStation;
+    }
+
+    public void next() {
+        if (currentRadioStation != 9) {
+            currentRadioStation++;
         } else {
             currentRadioStation = 0;
         }
     }
 
-    public void prev(int newRadioStation) {
-        if (newRadioStation >= 1 && newRadioStation <= 9) {
-            currentRadioStation = --newRadioStation;
+    public void prev() {
+        if (currentRadioStation != 0) {
+            currentRadioStation--;
         } else {
             currentRadioStation = 9;
         }
-    }
-
-    public void setCurrentRadioStation(int newRadioStation) {
-        if (newRadioStation < 0) {
-            return;
-        }
-        if (newRadioStation > 9) {
-            return;
-        }
-        currentRadioStation = newRadioStation;
     }
 
     // SOUND VOLUME
@@ -38,17 +38,27 @@ public class Radio {
         return currentSoundVolume;
     }
 
-    public void increaseVolume(int newSoundVolume) {
-        if (newSoundVolume >= 0 && newSoundVolume <= 9) {
-            currentSoundVolume = ++newSoundVolume;
+    public void setCurrentSoundVolume(int currentSoundVolume) {
+        if (currentSoundVolume < 0) {
+            return;
+        }
+        if (currentSoundVolume > 10) {
+            return;
+        }
+        this.currentSoundVolume = currentSoundVolume;
+    }
+
+    public void increaseVolume() {
+        if (currentSoundVolume != 10) {
+            currentSoundVolume++;
         } else {
             currentSoundVolume = 10;
         }
     }
 
-    public void decreaseVolume(int newSoundVolume) {
-        if (newSoundVolume >= 1 && newSoundVolume <= 10) {
-            currentSoundVolume = --newSoundVolume;
+    public void decreaseVolume() {
+        if (currentSoundVolume != 0) {
+            currentSoundVolume--;
         } else {
             currentSoundVolume = 0;
         }
